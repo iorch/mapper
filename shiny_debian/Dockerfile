@@ -43,6 +43,9 @@ RUN  R -e "install.packages('rmarkdown', repos='http://cran.rstudio.com/')" &&\
   R -e "install.packages('devtools', repos='http://cran.rstudio.com/')" &&\
   R -e "library('devtools'); devtools::install_github('ShinyDash', 'trestletech')" &&\
   R -e "install.packages('rgdal', repos='http://cran.rstudio.com/')" &&\
+  R -e "install.packages('DT', repos='http://cran.rstudio.com/')" &&\
+  R -e "install.packages(c('assertthat','lazyeval'), repos='http://mran.revolutionanalytics.com')" &&\
+  R -e "install.packages('http://cran.r-project.org/src/contrib/Archive/dplyr/dplyr_0.4.1.tar.gz', repos=NULL)"&&\
   R -e "install.packages('shiny', repos='http://cran.rstudio.com/')"
 
 RUN wget --no-verbose http://ftp.us.debian.org/debian/pool/main/o/openssl/libssl0.9.8_0.9.8o-4squeeze14_amd64.deb && \
