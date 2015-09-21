@@ -32,7 +32,6 @@ ADD scripts /scripts
 
 RUN . /scripts/psql.sh
 
-
 RUN  R -e "install.packages('rmarkdown', repos='http://cran.rstudio.com/')" &&\
   R -e "install.packages('leaflet', repos='http://cran.rstudio.com/')" &&\
   R -e "install.packages('RPostgreSQL', repos='http://cran.rstudio.com/')" &&\
