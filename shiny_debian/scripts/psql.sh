@@ -9,5 +9,7 @@ su -c "psql -c \"CREATE USER root WITH PASSWORD '$POSTGRES_PASSWD';\"" \
 su -c "psql -c \"CREATE DATABASE tomala OWNER root;\"" \
     -s /bin/bash postgres
 
-    pg_ctlcluster `pg_lsclusters| tail -1| awk '{print $1}'` \
+su -c "psql -d tomala < /srv/shiny-server/tomalapp/scripts/heatmap.sql"
+
+pg_ctlcluster `pg_lsclusters| tail -1| awk '{print $1}'` \
       `pg_lsclusters|tail -1 | awk '{print $2}'` stop
