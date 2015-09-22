@@ -12,10 +12,10 @@ set.seed(100)
 # By ordering by centile, we ensure that the (comparatively rare) SuperZIPs
 # will be drawn last and thus be easier to see
 connection <- dbConnect( PostgreSQL( max.con = 100),
-                        host = "192.168.99.100",
-                        port = 5432,
+                        host = 'POSTGRES_PORT_5432_TCP_ADDR',
+                        port = POSTGRES_PORT_5432_TCP_PORT,
                         user = "postgres",
-                        password = "helloNSA",
+                        password = 'POSTGRES_ENV_POSTGRES_PASSWORD',
                         dbname = "tomala" )
 
 shinyServer(function(input, output, session) {

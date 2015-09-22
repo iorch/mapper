@@ -3,5 +3,6 @@ import os
 
 class Config(object):
     DEBUG = os.getenv('DEBUG_MODE')
-    SECRET_KEY = os.getenv('SECRET_KEY')
-    SQLALCHEMY_DATABASE_URI = os.getenv('SQLALCHEMY_URL')
+    ADDR = os.getenv('POSTGRES_PORT_5432_TCP_ADDR')
+    PORT = os.getenv('POSTGRES_PORT_5432_TCP_PORT')
+    PASSWORD = os.getenv('POSTGRES_ENV_POSTGRES_PASSWORD')

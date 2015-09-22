@@ -9,9 +9,12 @@ app = Flask(__name__)
 app.config.from_object('config.Config')
 connection = psycopg2.connect("dbname='tomala' \
                 user=postgres \
-                host=192.168.99.100 \
-                port=5432 \
-                password=helloNSA")
+                host={host} \
+                port={port} \
+                password={psswd}".format(
+                    host=app.config['ADDR'],
+                    port=app.config['PORT'],
+                    psswd=app.config['PASSWORD']))
 cursor = connection.cursor()
 
 @app.route('/store', methods = ['POST'])

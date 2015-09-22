@@ -41,7 +41,7 @@ shinyUI(navbarPage("Tómala", id="nav",
                                               h2("Explorador de campañas"),
 
                                               selectInput("color", "Tipo de Reporte", reporttype),
-                                              selectInput("size", "Formato", formattype, selected = "events")#,
+                                              selectInput("size", "Formato", formattype, selected = "heatmap")#,
                                               #conditionalPanel("input.color == 'superzip' || input.size == 'superzip'",
                                                                # Only prompt for threshold when coloring or sizing by superzip
                                               #                 numericInput("threshold", "SuperZIP threshold (top n percentile)", 5)

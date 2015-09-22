@@ -13,8 +13,8 @@ RUN echo "en_US.UTF-8 UTF-8" >> /etc/locale.gen \
   && /usr/sbin/update-locale LANG=en_US.UTF-8
 
 ENV LC_ALL en_US.UTF-8
-ENV LANG en_US.UTF-8
 
+ENV LANG en_US.UTF-8
 RUN aptitude install -y \
   libgdal-dev \
   libgdal1-dev \
@@ -29,15 +29,12 @@ RUN aptitude install -y \
   r-base-dev
 
 ADD scripts /scripts
-
 RUN . /scripts/psql.sh
 
 RUN  R -e "install.packages('rmarkdown', repos='http://cran.rstudio.com/')" &&\
   R -e "install.packages('leaflet', repos='http://cran.rstudio.com/')" &&\
   R -e "install.packages('RPostgreSQL', repos='http://cran.rstudio.com/')" &&\
   R -e "install.packages('rjson', repos='http://cran.rstudio.com/')" &&\
-  wget http://cran.r-project.org/src/contrib/RJSONIO_1.3-0.tar.gz &&\
-  R CMD INSTALL --configure-args="--with-local-libjson=yes" RJSONIO_1.3-0.tar.gz &&\
   R -e "install.packages('rstudioapi', repos='http://cran.rstudio.com/')" &&\
   R -e "install.packages('devtools', repos='http://cran.rstudio.com/')" &&\
   R -e "library('devtools'); devtools::install_github('ShinyDash', 'trestletech')" &&\
@@ -45,7 +42,11 @@ RUN  R -e "install.packages('rmarkdown', repos='http://cran.rstudio.com/')" &&\
   R -e "install.packages('DT', repos='http://cran.rstudio.com/')" &&\
   R -e "install.packages(c('assertthat','lazyeval'), repos='http://mran.revolutionanalytics.com')" &&\
   R -e "install.packages('http://cran.r-project.org/src/contrib/Archive/dplyr/dplyr_0.4.1.tar.gz', repos=NULL)"&&\
-  R -e "install.packages('shiny', repos='http://cran.rstudio.com/')"
+  R -e "install.packages('shiny', repos='http://cran.rstudio.com/')" &&\
+  wget http://cran.r-project.org/src/contrib/RJSONIO_1.3-0.tar.gz &&\
+  R CMD INSTALL --configure-args="--with-local-libjson=yes" RJSONIO_1.3-0.tar.gz
+
+
 
 RUN wget --no-verbose http://ftp.us.debian.org/debian/pool/main/o/openssl/libssl0.9.8_0.9.8o-4squeeze14_amd64.deb && \
   dpkg -i libssl0.9.8_0.9.8o-4squeeze14_amd64.deb && \
