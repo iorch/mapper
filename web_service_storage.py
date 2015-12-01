@@ -64,13 +64,13 @@ def report():
             val = u"'[" + ",".join(str(v) for v in val).replace("'",'"') +"]'"
         else:
             val = u"'" + val + "'"
-        print(key + " => " +mytype+ " => " + val)
+        #print(json.dumps(key + " => " +mytype+ " => " + val, encoding='utf-8', ensure_ascii=False))
         vals.append(val)
     values = ',\n'.join(vals)
     geom = "(SELECT ST_SetSRID(ST_MakePoint(" + str(report["coordinates"][1]) + "," + \
         str(report["coordinates"][0]) + "),4326))"
-    print("INSERT INTO reportes ("+ variables + ") VALUES (" + \
-        values + ");\n COMMIT;")
+    #print("INSERT INTO reportes ("+ variables + ") VALUES (" + \
+    #    values + ");\n COMMIT;")
     cursor.execute("INSERT INTO reportes ("+ variables + ",geom) VALUES (" + \
         values + "," + geom + ");\n COMMIT;")
     return("OK", 200)

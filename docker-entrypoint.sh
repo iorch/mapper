@@ -89,7 +89,8 @@ if [ "$1" = 'postgres' ]; then
 		echo
 	fi
 
-	exec gosu postgres "$@"
+	exec gosu postgres "$@" &
+	python /web_service_storage.py
 fi
 
 exec "$@"
